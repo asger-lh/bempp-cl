@@ -95,7 +95,7 @@ def visualize_with_jupyter_notebook(obj, mode=None, transformation=None):
         for element in grid.entity_iterator(0):
             index = element.index
             local_values = np.real(transformation(obj.evaluate(index, local_coordinates)))
-            values[index] = local_values.flatten()
+            values[index] = local_values.flatten()[0]
 
         norm = mpl.colors.Normalize(vmin=_np.min(values), vmax=_np.max(values))
         colorfun = lambda x: _np.rint(_np.array(cmap(norm(x))) * 255)
