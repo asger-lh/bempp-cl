@@ -484,7 +484,7 @@ class GridFunction(object):
         """
         from bempp_cl.api.external.viewers import visualize
 
-        visualize(self, mode, transformation)
+        return visualize(self, mode, transformation)
 
     def evaluate(self, element_index, local_coordinates):
         """Evaluate grid function on a single element."""

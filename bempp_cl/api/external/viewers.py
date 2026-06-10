@@ -50,7 +50,7 @@ def visualize(obj, mode=None, transformation=None):
     if bempp_cl.api.PLOT_BACKEND == "paraview":
         visualize_with_paraview(obj, mode, transform)
     if bempp_cl.api.PLOT_BACKEND == "jupyter_notebook":
-        visualize_with_jupyter_notebook(obj, mode, transform)
+        return visualize_with_jupyter_notebook(obj, mode, transform)
 
 
 def visualize_with_jupyter_notebook(obj, mode=None, transformation=None):
@@ -78,7 +78,7 @@ def visualize_with_jupyter_notebook(obj, mode=None, transformation=None):
             color_func=elements.shape[1] * ["rgb(255, 222, 173)"],
         )
         fig["layout"]["scene"].update(go.layout.Scene(aspectmode="data"))
-        plotly.offline.iplot(fig)
+        return fig
 
     elif isinstance(obj, GridFunction):
         import matplotlib as mpl
@@ -108,7 +108,7 @@ def visualize_with_jupyter_notebook(obj, mode=None, transformation=None):
             color_func=color_codes,
         )
         fig["layout"]["scene"].update(go.layout.Scene(aspectmode="data"))
-        plotly.offline.iplot(fig)
+        return fig
 
 
 def visualize_with_gmsh(obj, mode=None, transformation=None):
